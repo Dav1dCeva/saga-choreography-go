@@ -1,0 +1,10 @@
+.env
+coverage.out
+coverage-core.out
+coverage.html
+*.test
+*.log
+bin/
+dist/
+.DS_Store
+.scannerwork/

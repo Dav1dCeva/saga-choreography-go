@@ -1,0 +1,19 @@
+# Override para Docker Desktop en Windows.
+# Docker Desktop usa contenedores Linux, pero los bind mounts de Windows no
+# necesitan (ni entienden) el sufijo SELinux ",Z". Este archivo mantiene los
+# mismos destinos y solo elimina esa etiqueta.
+services:
+  postgres:
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+
+  prometheus:
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana

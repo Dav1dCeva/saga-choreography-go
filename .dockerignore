@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+coverage.out
+coverage.html
+docs
+monitoring
+scripts
+README.md
+*.md
